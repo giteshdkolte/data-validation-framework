@@ -1,0 +1,97 @@
+DataComPy Comparison
+--------------------
+
+DataFrame Summary
+-----------------
+
+  DataFrame  Columns  Rows
+0    source        9   600
+1    target       10   600
+
+Column Summary
+--------------
+
+Number of columns in common: 9
+Number of columns in source but not in target: 0 []
+Number of columns in target but not in source: 1 ['target_system_id']
+
+Row Summary
+-----------
+
+Matched on: record_id
+Any duplicates on match values: No
+Absolute Tolerance: 0
+Relative Tolerance: 0
+Number of rows in common: 600
+Number of rows in source but not in target: 0
+Number of rows in target but not in source: 0
+
+Number of rows with some compared columns unequal: 44
+Number of rows with all compared columns equal: 556
+
+Column Comparison
+-----------------
+
+Number of columns compared with some values unequal: 4
+Number of columns compared with all values equal: 5
+Total number of values which compare unequal: 46
+
+Columns with Unequal Values or Types
+------------------------------------
+
+    Column source dtype target dtype  # Unequal  Max Diff  # Null Diff
+0   amount       object       object         13      1.25            0
+1  balance       object       object          9      0.50            0
+3    notes       object       object         12      0.00           12
+2   status       object       object         12      0.00            0
+
+Sample Rows with Unequal Values
+-------------------------------
+
+  record_id amount (source) amount (target)
+0       330           12264        12265.25
+1        48         9194.50         9195.75
+2       377        11917.25         11918.5
+3         1         7784.25          7785.5
+4        95        72322.25         72323.5
+5       565            2497         2498.25
+6       283           57078        57079.25
+7       424           61829        61830.25
+8       518        49712.25         49713.5
+9       471        25049.50        25050.75
+
+  record_id balance (source) balance (target)
+0        80          1309.50             1309
+1       552         25109.10            25109
+2       198         16561.10            16561
+3       139         37755.10            37755
+4       257         35819.25            35819
+5       375         42004.50            42004
+6       434         15356.50            15356
+7        21         46279.10            46279
+8       316          7371.25             7371
+
+  record_id status (source) status (target)
+0       165        INACTIVE         CHANGED
+1       112        INACTIVE         CHANGED
+2       377        INACTIVE         CHANGED
+3       271        INACTIVE         CHANGED
+4         6         PENDING         CHANGED
+5        59          ACTIVE         CHANGED
+6       218          ACTIVE         CHANGED
+7       589        INACTIVE         CHANGED
+8       324         PENDING         CHANGED
+9       430        INACTIVE         CHANGED
+
+  record_id notes (source) notes (target)
+0       231       Note 231           None
+1        16        Note 16           None
+2       274       Note 274           None
+3        59        Note 59           None
+4       403       Note 403           None
+5       489       Note 489           None
+6       446       Note 446           None
+7       145       Note 145           None
+8       317       Note 317           None
+9       102       Note 102           None
+

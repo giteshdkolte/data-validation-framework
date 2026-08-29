@@ -1,0 +1,38 @@
+record_id,customer_id_source,customer_id_target,customer_name_source,customer_name_target,email_source,email_target,amount_source,amount_target,balance_source,balance_target,status_source,status_target,event_date_source,event_date_target,notes_source,notes_target
+1,CUST00001,CUST00001,Customer 1,Customer 1  ,customer1@example.com,customer1@example.com,68381.75,68381.75,14479.10,14479.10,ACTIVE,ACTIVE,2025-01-02,2025-01-02,Note 1,Note 1
+103,CUST00103,CUST00103,Customer 103,Customer 103  ,customer103@example.com,customer103@example.com,49407.50,49407.50,18752.25,18752.25,ACTIVE,ACTIVE,2025-04-14,2025-04-14,Note 103,Note 103
+120,CUST00120,CUST00120,Customer 120,Customer 120  ,customer120@example.com,customer120@example.com,99732.25,99732.25,9639.00,9639.00,INACTIVE,INACTIVE,2025-05-01,2025-05-01,Note 120,Note 120
+137,CUST00137,CUST00137,Customer 137,Customer 137  ,customer137@example.com,customer137@example.com,67860.50,67860.50,16353.10,16353.10,ACTIVE,ACTIVE,2025-05-18,2025-05-18,Note 137,Note 137
+154,CUST00154,CUST00154,Customer 154,Customer 154  ,customer154@example.com,customer154@example.com,49808.50,49808.50,49161.00,49161.00,PENDING,PENDING,2025-06-04,2025-06-04,Note 154,Note 154
+171,CUST00171,CUST00171,Customer 171,Customer 171  ,customer171@example.com,customer171@example.com,8160.25,8160.25,38382.25,38382.25,ACTIVE,ACTIVE,2025-06-21,2025-06-21,,
+18,CUST00018,CUST00018,Customer 18,Customer 18  ,customer18@example.com,customer18@example.com,36112.50,36112.50,27137.00,27137.00,PENDING,PENDING,2025-01-19,2025-01-19,Note 18,Note 18
+188,CUST00188,CUST00188,Customer 188,Customer 188  ,customer188@example.com,customer188@example.com,13370.75,13370.75,48720.25,48720.25,INACTIVE,INACTIVE,2025-07-08,2025-07-08,Note 188,Note 188
+205,CUST00205,CUST00205,Customer 205,Customer 205  ,customer205@example.com,customer205@example.com,84388.00,84388.00,14196.00,14196.00,ACTIVE,ACTIVE,2025-07-25,2025-07-25,Note 205,Note 205
+222,CUST00222,CUST00222,Customer 222,Customer 222  ,customer222@example.com,customer222@example.com,17751.75,17751.75,26091.25,26091.25,PENDING,PENDING,2025-08-11,2025-08-11,Note 222,Note 222
+239,CUST00239,CUST00239,Customer 239,Customer 239  ,customer239@example.com,customer239@example.com,38912.50,38912.50,27154.00,27154.00,INACTIVE,INACTIVE,2025-08-28,2025-08-28,Note 239,Note 239
+256,CUST00256,CUST00256,Customer 256,Customer 256  ,customer256@example.com,customer256@example.com,33507.50,33507.50,4939.50,4939.50,PENDING,PENDING,2025-09-14,2025-09-14,Note 256,Note 256
+273,CUST00273,CUST00273,Customer 273,Customer 273  ,customer273@example.com,customer273@example.com,59752.50,59752.50,44561.50,44561.50,INACTIVE,INACTIVE,2025-10-01,2025-10-01,Note 273,Note 273
+290,CUST00290,CUST00290,Customer 290,Customer 290  ,customer290@example.com,customer290@example.com,62556.00,62556.00,41314.25,41314.25,INACTIVE,INACTIVE,2025-10-18,2025-10-18,Note 290,Note 290
+307,CUST00307,CUST00307,Customer 307,Customer 307  ,customer307@example.com,customer307@example.com,97146.00,97146.00,6426.25,6426.25,PENDING,PENDING,2025-11-04,2025-11-04,Note 307,Note 307
+324,CUST00324,CUST00324,Customer 324,Customer 324  ,customer324@example.com,customer324@example.com,29136.00,29136.00,34315.25,34315.25,ACTIVE,ACTIVE,2025-11-21,2025-11-21,Note 324,Note 324
+341,CUST00341,CUST00341,Customer 341,Customer 341  ,customer341@example.com,customer341@example.com,18188.00,18188.00,43846.50,43846.50,ACTIVE,ACTIVE,2025-12-08,2025-12-08,Note 341,Note 341
+35,CUST00035,CUST00035,Customer 35,Customer 35  ,customer35@example.com,customer35@example.com,31996.75,31996.75,30411.00,30411.00,INACTIVE,INACTIVE,2025-02-05,2025-02-05,Note 35,Note 35
+358,CUST00358,CUST00358,Customer 358,Customer 358  ,customer358@example.com,customer358@example.com,23601.00,23601.00,46145.50,46145.50,PENDING,PENDING,2025-12-25,2025-12-25,Note 358,Note 358
+375,CUST00375,CUST00375,Customer 375,Customer 375  ,customer375@example.com,customer375@example.com,56754.25,56754.25,34158.25,34158.25,ACTIVE,ACTIVE,2025-01-11,2025-01-11,Note 375,Note 375
+392,CUST00392,CUST00392,Customer 392,Customer 392  ,customer392@example.com,customer392@example.com,77445.25,77445.25,36259.50,36259.50,PENDING,PENDING,2025-01-28,2025-01-28,Note 392,Note 392
+409,CUST00409,CUST00409,Customer 409,Customer 409  ,customer409@example.com,customer409@example.com,895.50,895.50,14082.00,14082.00,INACTIVE,INACTIVE,2025-02-14,2025-02-14,Note 409,Note 409
+426,CUST00426,CUST00426,Customer 426,Customer 426  ,customer426@example.com,customer426@example.com,14652.25,14652.25,3859.10,3859.10,INACTIVE,INACTIVE,2025-03-03,2025-03-03,Note 426,Note 426
+443,CUST00443,CUST00443,Customer 443,Customer 443  ,customer443@example.com,customer443@example.com,92579.50,"92579.50
+",45195.25,45195.25,INACTIVE,INACTIVE,2025-03-20,2025-03-20,Note 443,Note 443
+460,CUST00460,CUST00460,Customer 460,Customer 460  ,customer460@example.com,customer460@example.com,7921.75,7921.75,16113.00,16113.00,PENDING,PENDING,2025-04-06,2025-04-06,,
+477,CUST00477,CUST00477,Customer 477,Customer 477  ,customer477@example.com,customer477@example.com,55308.00,55308.00,8406.50,8406.50,ACTIVE,ACTIVE,2025-04-23,2025-04-23,Note 477,Note 477
+494,CUST00494,CUST00494,Customer 494,Customer 494  ,customer494@example.com,customer494@example.com,55810.50,55810.50,42208.25,42208.25,INACTIVE,INACTIVE,2025-05-10,2025-05-10,,
+511,CUST00511,CUST00511,Customer 511,Customer 511  ,customer511@example.com,customer511@example.com,81319.25,81319.25,19423.25,19423.25,ACTIVE,ACTIVE,2025-05-27,2025-05-27,Note 511,Note 511
+52,CUST00052,CUST00052,Customer 52,Customer 52  ,customer52@example.com,customer52@example.com,69798.25,69798.25,40004.25,40004.25,INACTIVE,INACTIVE,2025-02-22,2025-02-22,Note 52,Note 52
+528,CUST00528,CUST00528,Customer 528,Customer 528  ,customer528@example.com,customer528@example.com,34353.00,34353.00,47784.10,47784.10,ACTIVE,ACTIVE,2025-06-13,2025-06-13,Note 528,Note 528
+545,CUST00545,CUST00545,Customer 545,Customer 545  ,customer545@example.com,customer545@example.com,85853.75,85853.75,9061.50,9061.50,ACTIVE,ACTIVE,2025-06-30,2025-06-30,Note 545,Note 545
+562,CUST00562,CUST00562,Customer 562,Customer 562  ,customer562@example.com,customer562@example.com,11771.75,11771.75,37154.00,37154.00,INACTIVE,INACTIVE,2025-07-17,2025-07-17,Note 562,Note 562
+579,CUST00579,CUST00579,Customer 579,Customer 579  ,customer579@example.com,customer579@example.com,79842.50,79842.50,7962.00,7962.00,INACTIVE,INACTIVE,2025-08-03,2025-08-03,Note 579,Note 579
+596,CUST00596,CUST00596,Customer 596,Customer 596  ,customer596@example.com,customer596@example.com,15620.50,15620.50,32212.00,32212.00,INACTIVE,INACTIVE,2025-08-20,2025-08-20,Note 596,Note 596
+69,CUST00069,CUST00069,Customer 69,Customer 69  ,customer69@example.com,customer69@example.com,31511.50,31511.50,19550.00,19550.00,ACTIVE,ACTIVE,2025-03-11,2025-03-11,,
+86,CUST00086,CUST00086,Customer 86,Customer 86  ,customer86@example.com,customer86@example.com,88351.00,88351.00,25969.00,25969.00,PENDING,PENDING,2025-03-28,2025-03-28,Note 86,Note 86

@@ -1,0 +1,199 @@
+default_settings: &defaults
+  db_name: validation_db
+  schema_name: validation_schema
+  absolute_tolerance: 0               # A fixed numeric margin of error allowed, regardless of the value's size. E.g., abs_tol=0.01 means 100.00 and 100.005 would be considered "equal"
+  relative_tolerance: 0               # A margin of error that scales with the size of the value — expressed as a fraction. E.g., rel_tol=0.001 means values can differ by up to 0.1% and still be "equal"
+  apply_fix_to_df: True               # Apply fix on the dataframes; sample fix data will be seen on the HTML
+  ignore_extra_columns: True          # Ignores any columns in one dataframe and not in the other. Anyway its not going to match
+  apply_fix_to_src_df_on_duplicate: True  # Apply fix on the dataframes to find on source; sample fix data will be seen on the HTML
+  apply_fix_to_tgt_df_on_duplicate: True  # Apply fix on the dataframes to find on target; sample fix data will be seen on the HTML
+
+output:
+  directory: "data_validation"
+  save_mismatches: true
+
+compare:
+  validation-1:
+    <<: *defaults
+    type: csv
+    sep: ","
+    ignore_extra_columns: False
+    source: "../data_files/csv_case1_source.csv"
+    target: "../data_files/csv_case1_target.csv"
+    on_cols: ["record_id"]
+    output:
+      report_dir: "data_validation_reports/validation-1"
+      report_name: "compare_report" # files are written as <report_name>.txt / .html / _mismatches.csv etc.
+      save_text: true 
+      save_html: true 
+      save_mismatches_csv: true
+      save_matched_csv: true
+      check_duplicate_on_source: true
+      check_duplicate_on_target: true
+    field_mapping:                  # It rename the column at target side of that of source side
+      customer_name: cust_name      # source.cust_name  <->  target.customer_name
+      email: email_address
+
+  validation-2:
+    <<: *defaults
+    type: csv
+    sep: ","
+    ignore_extra_columns: False
+    source: "../data_files/csv_case2_source.csv"
+    target: "../data_files/csv_case2_target.csv"
+    on_cols: ["record_id"]
+    output:
+      report_dir: "data_validation_reports/validation-2"
+      report_name: "compare_report" # files are written as <report_name>.txt / .html / _mismatches.csv etc.
+      save_text: true 
+      save_html: true 
+      save_mismatches_csv: true
+      save_matched_csv: true
+      check_duplicate_on_source: true
+      check_duplicate_on_target: true
+
+  validation-3:
+    <<: *defaults
+    type: csv
+    sep: ","
+    ignore_extra_columns: False
+    source: "../data_files/csv_case3_source.csv"
+    target: "../data_files/csv_case3_target.csv"
+    on_cols: ["record_id"]
+    output:
+      report_dir: "data_validation_reports/validation-3"
+      report_name: "compare_report" # files are written as <report_name>.txt / .html / _mismatches.csv etc.
+      save_text: true 
+      save_html: true 
+      save_mismatches_csv: true
+      save_matched_csv: true
+      check_duplicate_on_source: true
+      check_duplicate_on_target: true
+
+  validation-4:
+    <<: *defaults
+    type: excel
+    source: "../data_files/excel_case1_source.xlsx"
+    source_sheet: 0                   # index (default) or sheet name string
+    target: "../data_files/excel_case1_target.xlsx"
+    target_sheet: 0                   # can differ from source
+    on_cols: ["record_id"]
+    output:
+      report_dir: "data_validation_reports/validation-4"
+      report_name: "compare_report"   # files are written as <report_name>.txt / .html / _mismatches.csv etc.
+      save_text: true 
+      save_html: true 
+      save_mismatches_csv: false
+      save_matched_csv: true
+      check_duplicate_on_source: true
+      check_duplicate_on_target: true
+    # no field_mapping needed - identical column names both sides
+
+  validation-5:
+    <<: *defaults
+    type: excel
+    apply_fix_to_df: False
+    ignore_extra_columns: False
+    apply_fix_to_src_df_on_duplicate: False
+    apply_fix_to_tgt_df_on_duplicate: False 
+    source: "../data_files/excel_case2_source.xlsx"
+    source_sheet: 0                   # index (default) or sheet name string
+    target: "../data_files/excel_case2_target.xlsx"
+    target_sheet: 0                   # can differ from source
+    on_cols: ["record_id"]
+    output:
+      report_dir: "data_validation_reports/validation-5"
+      report_name: "compare_report"   # files are written as <report_name>.txt / .html / _mismatches.csv etc.
+      save_text: true 
+      save_html: true 
+      save_mismatches_csv: true
+      save_matched_csv: true
+
+  validation-6:
+    <<: *defaults
+    type: excel
+    source: "../data_files/excel_case3_source.xlsx"
+    source_sheet: 0                   # index (default) or sheet name string
+    target: "../data_files/excel_case3_target.xlsx"
+    target_sheet: 0                   # can differ from source
+    on_cols: ["record_id"]
+    output:
+      report_dir: "data_validation_reports/validation-6"
+      report_name: "compare_report"   # files are written as <report_name>.txt / .html / _mismatches.csv etc.
+      save_text: true 
+      save_html: true 
+      save_mismatches_csv: false
+      save_matched_csv: true
+
+  validation-7:
+    <<: *defaults
+    type: rds
+    apply_fix_to_df: True
+    source_table: "validation_case1_source"            # Only to capture HTML logs
+    target_table: "validation_case1_target"            # Only to capture HTML logs
+    # {{SCHEMA}} -> schema_name
+    source_query: |
+      SELECT record_id, customer_id, customer_name, email, amount, balance, status, event_date, notes
+      FROM validation_schema.validation_case1_source
+    target_query: |
+      SELECT record_id, customer_id, customer_name, email, amount, balance, status, event_date, notes, target_system_id
+      FROM validation_schema.validation_case1_target
+    on_cols: ["record_id"]
+    output:
+      report_dir: "data_validation_reports/validation-7"
+      report_name: "compare_report" # files are written as <report_name>.txt / .html / _mismatches.csv etc.
+      save_text: true 
+      save_html: true 
+      save_mismatches_csv: true
+      save_matched_csv: true
+      check_duplicate_on_source: true
+      check_duplicate_on_target: true
+    # no field_mapping needed - identical column names both sides
+
+  validation-8:
+    <<: *defaults
+    type: rds
+    apply_fix_to_df: True
+    source_table: "validation_case2_source"            # Only to capture HTML logs
+    target_table: "validation_case2_target"            # Only to capture HTML logs
+    # {{SCHEMA}} -> schema_name
+    source_query: |
+      SELECT *
+      FROM validation_schema.validation_case2_source
+    target_query: |
+      SELECT *
+      FROM validation_schema.validation_case2_target
+    on_cols: ["record_id"]
+    output:
+      report_dir: "data_validation_reports/validation-8"
+      report_name: "compare_report" # files are written as <report_name>.txt / .html / _mismatches.csv etc.
+      save_text: true 
+      save_html: true 
+      save_mismatches_csv: true
+      save_matched_csv: true
+      check_duplicate_on_source: true
+      check_duplicate_on_target: true
+
+  validation-9:
+    <<: *defaults
+    type: rds
+    apply_fix_to_df: True
+    source_table: "validation_case3_source"            # Only to capture HTML logs
+    target_table: "validation_case3_target"            # Only to capture HTML logs
+    # {{SCHEMA}} -> schema_name
+    source_query: |
+      SELECT *
+      FROM validation_schema.validation_case3_source
+    target_query: |
+      SELECT *
+      FROM validation_schema.validation_case3_target
+    on_cols: ["record_id"]
+    output:
+      report_dir: "data_validation_reports/validation-9"
+      report_name: "compare_report" # files are written as <report_name>.txt / .html / _mismatches.csv etc.
+      save_text: true 
+      save_html: true 
+      save_mismatches_csv: true
+      save_matched_csv: true
+      check_duplicate_on_source: true
+      check_duplicate_on_target: true

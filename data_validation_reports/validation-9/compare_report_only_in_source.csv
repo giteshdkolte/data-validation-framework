@@ -1,0 +1,6 @@
+record_id,customer_id,customer_name,email,amount,balance,status,event_date,notes,source_batch_id
+590,CUST00590,Customer 590,customer590@example.com,78520.75,28506.10,INACTIVE,2025-08-14,Note 590,SRC-BATCH-6
+591,CUST00591,Customer 591,customer591@example.com,78308.50,31149,PENDING,2025-08-15,Note 591,SRC-BATCH-6
+592,CUST00592,Customer 592,customer592@example.com,57943.50,43188.50,PENDING,2025-08-16,Note 592,SRC-BATCH-6
+593,CUST00593,Customer 593,customer593@example.com,80054,3728.25,INACTIVE,2025-08-17,Note 593,SRC-BATCH-6
+594,CUST00594,Customer 594,customer594@example.com,3447,46284.25,INACTIVE,2025-08-18,Note 594,SRC-BATCH-6

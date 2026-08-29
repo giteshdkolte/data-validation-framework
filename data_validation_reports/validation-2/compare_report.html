@@ -1,0 +1,499 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Data Validator Report - validation-2</title>
+<style>
+  * { box-sizing: border-box; }
+
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f8fafc;
+    color: #0f172a;
+  }
+
+  .header {
+    background-color: #0f172a;
+    color: #f8fafc;
+    padding: 28px 40px;
+  }
+
+  .header .program {
+    font-size: 13px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    color: #93c5fd;
+    font-weight: 600;
+    margin-bottom: 4px;
+  }
+
+  .header h1 {
+    font-size: 24px;
+    margin: 0 0 6px 0;
+    font-weight: 700;
+  }
+
+  .header .meta {
+    font-size: 13px;
+    color: #cbd5e1;
+  }
+
+  .status-pill {
+    display: inline-block;
+    padding: 6px 16px;
+    border-radius: 999px;
+    background-color: #16a34a;
+    color: #ffffff;
+    font-weight: 700;
+    font-size: 13px;
+    letter-spacing: 0.5px;
+    margin-top: 12px;
+  }
+
+  .container {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 32px 40px 60px 40px;
+  }
+
+  .section-title {
+    font-size: 15px;
+    font-weight: 700;
+    color: #334155;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    margin: 36px 0 14px 0;
+  }
+
+  .stats-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 14px;
+  }
+
+  .stat-card {
+    background: #ffffff;
+    border: 1px solid #e2e8f0;
+    border-radius: 10px;
+    padding: 18px 22px;
+    min-width: 140px;
+    flex: 1 1 140px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.04);
+  }
+
+  .stat-value {
+    font-size: 26px;
+    font-weight: 700;
+    line-height: 1.2;
+  }
+
+  .stat-label {
+    font-size: 12px;
+    color: #64748b;
+    margin-top: 4px;
+    font-weight: 500;
+  }
+
+  .card {
+    background: #ffffff;
+    border: 1px solid #e2e8f0;
+    border-radius: 10px;
+    padding: 20px 24px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.04);
+  }
+
+  .source-target-grid {
+    display: flex;
+    gap: 14px;
+    flex-wrap: wrap;
+  }
+
+  .source-target-col {
+    flex: 1 1 300px;
+    background: #ffffff;
+    border: 1px solid #e2e8f0;
+    border-radius: 10px;
+    padding: 18px 22px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.04);
+  }
+
+  .path-block {
+    margin-bottom: 14px;
+  }
+
+  .path-block:last-child {
+    margin-bottom: 0;
+  }
+
+  .path-label {
+    font-size: 11px;
+    font-weight: 700;
+    color: #64748b;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    margin-bottom: 6px;
+  }
+
+  .path-chip {
+    font-family: "SFMono-Regular", Consolas, "Liberation Mono", Menlo, monospace;
+    font-size: 12.5px;
+    background: #f1f5f9;
+    border: 1px solid #e2e8f0;
+    border-radius: 6px;
+    padding: 8px 12px;
+    color: #1e293b;
+    word-break: break-all;
+    line-height: 1.5;
+  }
+
+  .table-scroll {
+    overflow-x: auto;
+    border: 1px solid #e2e8f0;
+    border-radius: 8px;
+  }
+
+  table.mismatch-table {
+    border-collapse: collapse;
+    width: 100%;
+    font-size: 12.5px;
+    white-space: nowrap;
+  }
+
+  table.mismatch-table thead th {
+    background-color: #f1f5f9;
+    color: #334155;
+    text-align: left;
+    padding: 10px 14px;
+    border-bottom: 2px solid #e2e8f0;
+    position: sticky;
+    top: 0;
+  }
+
+  table.mismatch-table tbody td {
+    padding: 8px 14px;
+    border-bottom: 1px solid #f1f5f9;
+    color: #1e293b;
+  }
+
+  table.mismatch-table tbody tr:nth-child(even) {
+    background-color: #f8fafc;
+  }
+
+  table.mismatch-table tbody tr:hover {
+    background-color: #eff6ff;
+  }
+
+  .no-mismatch {
+    padding: 24px;
+    text-align: center;
+    color: #16a34a;
+    font-weight: 600;
+    background: #f0fdf4;
+    border: 1px solid #bbf7d0;
+    border-radius: 8px;
+  }
+
+  .files-list {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .file-item {
+    font-family: "SFMono-Regular", Consolas, "Liberation Mono", Menlo, monospace;
+    font-size: 12.5px;
+    background: #f1f5f9;
+    border: 1px solid #e2e8f0;
+    border-radius: 6px;
+    padding: 10px 14px;
+    color: #1e293b;
+    word-break: break-all;
+  }
+
+  .file-item-empty {
+    color: #94a3b8;
+    font-style: italic;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  }
+
+  .fix-samples {
+    font-family: "SFMono-Regular", Consolas, "Liberation Mono", Menlo, monospace;
+    font-size: 11.5px;
+    color: #475569;
+    line-height: 1.6;
+  }
+
+  .ws-marker {
+    color: #f97316;
+    font-weight: 700;
+  }
+
+  .fix-badge {
+    display: inline-block;
+    padding: 2px 10px;
+    border-radius: 999px;
+    font-size: 10.5px;
+    font-weight: 700;
+    letter-spacing: 0.3px;
+    text-transform: uppercase;
+    margin-left: 8px;
+    vertical-align: middle;
+  }
+
+  .fix-badge-on {
+    background-color: #dbeafe;
+    color: #1d4ed8;
+  }
+
+  .fix-badge-off {
+    background-color: #f1f5f9;
+    color: #64748b;
+  }
+
+  .dup-warning {
+    background: #fffbeb;
+    border: 1px solid #fde68a;
+    color: #92400e;
+    border-radius: 8px;
+    padding: 14px 16px;
+    font-size: 12.5px;
+    margin-bottom: 14px;
+    line-height: 1.6;
+  }
+
+  .dup-warning code {
+    background: #fef3c7;
+    padding: 1px 5px;
+    border-radius: 4px;
+    font-family: "SFMono-Regular", Consolas, "Liberation Mono", Menlo, monospace;
+  }
+
+  pre.raw-report {
+    background: #0f172a;
+    color: #e2e8f0;
+    padding: 20px;
+    border-radius: 10px;
+    overflow-x: auto;
+    font-size: 12px;
+    line-height: 1.6;
+    font-family: "SFMono-Regular", Consolas, "Liberation Mono", Menlo, monospace;
+  }
+
+  .footer {
+    text-align: center;
+    color: #94a3b8;
+    font-size: 12px;
+    margin-top: 40px;
+  }
+</style>
+</head>
+<body>
+
+  <div class="header">
+    <div class="program">Data Validator</div>
+    <h1>validation-2</h1>
+    <div class="meta">Generated on 2026-08-29 23:12:34</div>
+    <div class="status-pill">MATCH</div>
+  </div>
+
+  <div class="container">
+
+    <div class="section-title">Source &amp; Target</div>
+    <div class="source-target-grid">
+      <div class="source-target-col">
+        <div class="path-block">
+          <div class="path-label">SOURCE FILE</div>
+          <div class="path-chip">D:\Gitesh Codes\Projects\data_files\csv_case2_source.csv</div>
+        </div>
+        </div>
+      <div class="source-target-col">
+        <div class="path-block">
+          <div class="path-label">TARGET FILE</div>
+          <div class="path-chip">D:\Gitesh Codes\Projects\data_files\csv_case2_target.csv</div>
+        </div>
+        </div>
+    </div>
+
+    <div class="section-title">Summary</div>
+    <div class="stats-grid">
+      
+        <div class="stat-card">
+          <div class="stat-value" style="color:#0f172a;">600</div>
+          <div class="stat-label">Source Rows</div>
+        </div>
+        
+        <div class="stat-card">
+          <div class="stat-value" style="color:#0f172a;">600</div>
+          <div class="stat-label">Target Rows</div>
+        </div>
+        
+        <div class="stat-card">
+          <div class="stat-value" style="color:#0f172a;">600</div>
+          <div class="stat-label">Matched Rows</div>
+        </div>
+        
+        <div class="stat-card">
+          <div class="stat-value" style="color:#16a34a;">0</div>
+          <div class="stat-label">Mismatched Rows</div>
+        </div>
+        
+        <div class="stat-card">
+          <div class="stat-value" style="color:#16a34a;">0</div>
+          <div class="stat-label">Only in Source</div>
+        </div>
+        
+        <div class="stat-card">
+          <div class="stat-value" style="color:#16a34a;">0</div>
+          <div class="stat-label">Only in Target</div>
+        </div>
+        
+        <div class="stat-card">
+          <div class="stat-value" style="color:#0f172a;">0.48</div>
+          <div class="stat-label">Duration (s)</div>
+        </div>
+        
+    </div>
+
+    <div class="section-title">Mismatch Preview (first 500 rows)</div>
+    <div class="card">
+      <div class="no-mismatch">No mismatches found</div>
+    </div>
+
+    <div class="section-title">Data Fixes Applied</div>
+    <div class="card">
+      
+            <div class="table-scroll">
+              <table class="mismatch-table">
+                <thead>
+                  <tr><th>Side</th><th>Field</th><th>Fix Type</th><th>Rows Affected</th><th>Example (before &rarr; after)</th></tr>
+                </thead>
+                <tbody>
+                <tr>
+                  <td>Source</td>
+                  <td>amount</td>
+                  <td>Numeric Formatting Normalized</td>
+                  <td>157</td>
+                  <td class="fix-samples">"57168.00" &rarr; "57168"<br>"55292.00" &rarr; "55292"<br>"9504.00" &rarr; "9504"</td>
+                </tr>
+                
+                <tr>
+                  <td>Source</td>
+                  <td>balance</td>
+                  <td>Numeric Formatting Normalized</td>
+                  <td>165</td>
+                  <td class="fix-samples">"8323.00" &rarr; "8323"<br>"28053.00" &rarr; "28053"<br>"32474.00" &rarr; "32474"</td>
+                </tr>
+                
+                <tr>
+                  <td>Target</td>
+                  <td>customer_name</td>
+                  <td>Whitespace / Newline Trimmed</td>
+                  <td>36</td>
+                  <td class="fix-samples">"Customer 1<span class="ws-marker">&middot;</span><span class="ws-marker">&middot;</span>" &rarr; "Customer 1"<br>"Customer 18<span class="ws-marker">&middot;</span><span class="ws-marker">&middot;</span>" &rarr; "Customer 18"<br>"Customer 35<span class="ws-marker">&middot;</span><span class="ws-marker">&middot;</span>" &rarr; "Customer 35"</td>
+                </tr>
+                
+                <tr>
+                  <td>Target</td>
+                  <td>amount</td>
+                  <td>Numeric Formatting Normalized</td>
+                  <td>157</td>
+                  <td class="fix-samples">"57168.00" &rarr; "57168"<br>"55292.00" &rarr; "55292"<br>"9504.00" &rarr; "9504"</td>
+                </tr>
+                
+                <tr>
+                  <td>Target</td>
+                  <td>amount</td>
+                  <td>Whitespace / Newline Trimmed</td>
+                  <td>15</td>
+                  <td class="fix-samples">"9137.75&crarr;" &rarr; "9137.75"<br>"44493.25&crarr;" &rarr; "44493.25"<br>"66907.50&crarr;" &rarr; "66907.50"</td>
+                </tr>
+                
+                <tr>
+                  <td>Target</td>
+                  <td>balance</td>
+                  <td>Numeric Formatting Normalized</td>
+                  <td>165</td>
+                  <td class="fix-samples">"8323.00" &rarr; "8323"<br>"28053.00" &rarr; "28053"<br>"32474.00" &rarr; "32474"</td>
+                </tr>
+                </tbody>
+              </table>
+            </div>
+            
+    </div>
+
+    <div class="section-title">Duplicate Records (on join key)</div>
+        <div class="card" style="margin-bottom:14px;">
+          <div class="path-label" style="margin-bottom:10px;">
+            SOURCE DUPLICATES (0 rows) <span class="fix-badge fix-badge-on">Fix Applied</span>
+          </div>
+          
+          <div class="no-mismatch">No duplicate source records found on join key.</div>
+        </div>
+        
+        <div class="card">
+          <div class="path-label" style="margin-bottom:10px;">
+            TARGET DUPLICATES (0 rows) <span class="fix-badge fix-badge-on">Fix Applied</span>
+          </div>
+          
+          <div class="no-mismatch">No duplicate target records found on join key.</div>
+        </div>
+        
+
+    <div class="section-title">Full DataComPy Report</div>
+    <pre class="raw-report">DataComPy Comparison
+--------------------
+
+DataFrame Summary
+-----------------
+
+  DataFrame  Columns  Rows
+0    source        9   600
+1    target        9   600
+
+Column Summary
+--------------
+
+Number of columns in common: 9
+Number of columns in source but not in target: 0 []
+Number of columns in target but not in source: 0 []
+
+Row Summary
+-----------
+
+Matched on: record_id
+Any duplicates on match values: No
+Absolute Tolerance: 0
+Relative Tolerance: 0
+Number of rows in common: 600
+Number of rows in source but not in target: 0
+Number of rows in target but not in source: 0
+
+Number of rows with some compared columns unequal: 0
+Number of rows with all compared columns equal: 600
+
+Column Comparison
+-----------------
+
+Number of columns compared with some values unequal: 0
+Number of columns compared with all values equal: 9
+Total number of values which compare unequal: 0
+
+</pre>
+
+    <div class="section-title">Generated Output Files</div>
+    <div class="card">
+      <div class="files-list">
+        <div class="file-item">D:\Gitesh Codes\Projects\data-validation-framework\data_validation_reports\validation-2\compare_report.txt</div><div class="file-item">D:\Gitesh Codes\Projects\data-validation-framework\data_validation_reports\validation-2\compare_report.html</div><div class="file-item">D:\Gitesh Codes\Projects\data-validation-framework\data_validation_reports\validation-2\compare_report_matched.csv</div>
+      </div>
+    </div>
+
+    <div class="footer">Data Validator &middot; Automated Report</div>
+
+  </div>
+
+</body>
+</html>

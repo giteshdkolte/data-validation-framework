@@ -1,0 +1,6 @@
+record_id,customer_id,customer_name,email,amount,balance,status,event_date,notes
+601,CUST00601,Target Only 601,targetonly601@example.com,60923.25,11257,INACTIVE,2025-01-02,Note 1
+602,CUST00602,Target Only 602,targetonly602@example.com,60923.25,11257,INACTIVE,2025-01-02,Note 1
+603,CUST00603,Target Only 603,targetonly603@example.com,60923.25,11257,INACTIVE,2025-01-02,Note 1
+604,CUST00604,Target Only 604,targetonly604@example.com,60923.25,11257,INACTIVE,2025-01-02,Note 1
+605,CUST00605,Target Only 605,targetonly605@example.com,60923.25,11257,INACTIVE,2025-01-02,Note 1

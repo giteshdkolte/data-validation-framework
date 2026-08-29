@@ -1,0 +1,38 @@
+DataComPy Comparison
+--------------------
+
+DataFrame Summary
+-----------------
+
+  DataFrame  Columns  Rows
+0    source        9   600
+1    target        9   600
+
+Column Summary
+--------------
+
+Number of columns in common: 9
+Number of columns in source but not in target: 0 []
+Number of columns in target but not in source: 0 []
+
+Row Summary
+-----------
+
+Matched on: record_id
+Any duplicates on match values: No
+Absolute Tolerance: 0
+Relative Tolerance: 0
+Number of rows in common: 600
+Number of rows in source but not in target: 0
+Number of rows in target but not in source: 0
+
+Number of rows with some compared columns unequal: 0
+Number of rows with all compared columns equal: 600
+
+Column Comparison
+-----------------
+
+Number of columns compared with some values unequal: 0
+Number of columns compared with all values equal: 9
+Total number of values which compare unequal: 0
+
